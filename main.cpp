@@ -1,6 +1,12 @@
 #include <iostream>
-
+#include "QuadTree.h"
 using namespace std;
+
+void printInfo(Node* n){
+  cout << "Info: << endl;
+  cout << "Coordenadas: (" << n->pos.x << ", " << n->pos.y << ")" << endl;
+  cout << "Población: " << n->data << endl;
+}
 
 int main() {
   
@@ -24,7 +30,18 @@ int main() {
   plane2D.insert(&p7);
   plane2D.insert(&p8);
   
-  cout << "Contenido en la coordenada (5,1): ";
+  cout << "Cantidad de puntos: " << plane2D.totalpoints() << endl;
+  cout << "Puntos ingresados:" << endl;
+  printInfo(&p1);
+  printInfo(&p2);
+  printInfo(&p3);
+  printInfo(&p4);
+  printInfo(&p5);
+  printInfo(&p6);
+  printInfo(&p7);
+  printInfo(&p8);
+  
+  /*cout << "Contenido en la coordenada (5,1): ";
 
   Node *p = plane2D.search(Point(5, 1));
   
@@ -40,6 +57,6 @@ int main() {
   if(p != NULL) cout << p->data << endl;
   else cout << "No existe el punto." << endl;
   
-  // Contenido en la coordenada (1,5): No existe el punto.
+  // Contenido en la coordenada (1,5): No existe el punto.*/
   return 0;
 }
