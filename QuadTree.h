@@ -18,22 +18,14 @@ struct Point{
 };
 
 struct Node{
-  Node* quadrants[4];
   Point pos;
   string nodeType;
   int data;
-  Node(Point p, string nType, int d){
-    pos = p;
-    nodeType = nType;
-    data = d;
-    for(int i = 0; i < 4; i++){
-      quadrants[i] = nullptr;
-    }
-  }
-  Node(){
-    for(int i = 0; i < 4; i++){
-      quadrants[i] = nullptr;
-    }
+  vector<Node*> quadrants;
+  Node(Point _pos, int _data){
+    pos = _pos;
+    data = _data;
+    quadrants.resize(4, nullptr);
   }
 };
 
@@ -47,11 +39,14 @@ class QuadTree{
     QuadTree* bottomLeftTree;
     QuadTree* bottomRightTree;
     int pointCount;
+    bool inBoundary(Point p);
   public:
+    QuadTree();
     QuadTree(Point topLeft, Point bottomRight);
-    int totalPoints(); 
-    int totalNodes(); 
-    void insert(Point p, int data); 
+    int totalPoints();
+    int totalNodes();
+    void insert(Node* node);
+    void insert(Point p, int data);//auxiliar para el otro insert
     vector<Node> list(); 
     int countRegion(Point p, int d); 
     int AggregateRegion(Point p, int d); 
