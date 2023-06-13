@@ -2,8 +2,8 @@
 #include <cmath>
 
 QuadTree::QuadTree(){
-    topLeft = Point(0, 0);
-    bottomRight = Point(0, 0);
+    topLeft = Point(0.0, 0.0);
+    bottomRight = Point(0.0, 0.0);
     n = nullptr;
     topLeftTree = nullptr;
     topRightTree = nullptr;
@@ -47,6 +47,8 @@ void QuadTree::insert(Node* node){
             n = node;
             n->nodeType = "black";
             pointCount++;
+        }else{
+            n->data.push_back(node->data[0]);
         }
         return;
     }
@@ -91,7 +93,8 @@ void QuadTree::insert(Node* node){
 
 //Se ocupará como auxiliar para el insert(Node* node) porque es más sencillo que cambiar todo
 void QuadTree::insert(Point p, int data){//Inserta un nuevo punto p en el QuadTree, asociando a dicho punto la información disponible en data (ej. la población de una ciudad con coordenadas p).
-    Node* newNode = new Node(p, data);
+    Node* newNode = new Node(p);
+    newNode->data.push_back(data);
     insert(newNode);
 }
 
