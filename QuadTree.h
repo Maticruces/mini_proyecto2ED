@@ -6,26 +6,26 @@
 using namespace std;
 
 struct Point{
-  int x, y;
-  Point(int _x, int _y){
-    x = _x;
-    y = _y;
+  double x, y;
+  Point(double _x, double _y){
+      x = _x;
+      y = _y;
   }
   Point(){
-    x = 0;
-    y = 0;
+      x = 0.0;
+      y = 0.0;
   }
 };
 
 struct Node{
   Point pos;
   string nodeType;
-  int data;
+  vector<int> data;
   vector<Node*> quadrants;
-  Node(Point _pos, int _data){
-    pos = _pos;
-    data = _data;
-    quadrants.resize(4, nullptr);
+  Node(Point _pos){
+      pos = _pos;
+      data.clear();
+      quadrants.resize(4, nullptr);
   }
 };
 
