@@ -6,7 +6,7 @@
 using namespace std;
 
 struct Point{
-  double x, y;
+  double x, y;  //x:horizontal:longitud   &   y:vertical:latitud ... En coordenadas va (y,x) Latitud,Longitud "a LA.LO le gusta la geografia"
   Point(double _x, double _y){
       x = _x;
       y = _y;
