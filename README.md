@@ -10,3 +10,6 @@ Eduardo Parra.
 
 
 FechaEntrega: 27 de Junio de 2023. Para: UniversidadDeConcepcion, Chile, VIII Region del Bio-Bio
+
+14Junio: yo creo que no es hora de hacer el informe aun, podemos escribir aqui que nos cuesta.
+Ademas le haria una reforma exhaustiba al informe no me parece la imagen del terreno sino una de la poblacion y no usar comic sans de fuente, ademas tenemos que explicar con nuestras palabras el funcionamiento del quadtree, explicaciones diferentes y no similares a los sitios de internet. ademas deberiamos ponerle dibujos explicativos. -EduardoParra.
