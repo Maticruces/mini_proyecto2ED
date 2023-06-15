@@ -1,4 +1,4 @@
-#include "Quadtree.h"
+#include "QuadTree.h"  //t mayuscula !!!!!!!
 #include <cmath>
 
 QuadTree::QuadTree(){
