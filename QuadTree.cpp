@@ -23,9 +23,9 @@ QuadTree::QuadTree(Point topL, Point bottomR){
     pointCount = 0;
 }
 
-bool QuadTree::inBoundary(Point p){
+bool QuadTree::inBoundary(Point p){ 
     return (p.x >= topLeft.x && p.x <= bottomRight.x && p.y >= topLeft.y && p.y <= bottomRight.y);
-}
+}  //funcion puntoEstaDentroDeMi? para plano derecho+ abajo+ (como en el canvas de java) .... !
 
 int QuadTree::totalPoints(){//Retorna la cantidad de puntos almacenados en el QuadTree
     return pointCount;
