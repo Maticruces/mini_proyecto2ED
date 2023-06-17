@@ -25,6 +25,13 @@ struct Node{
         data.clear();
         quadrants.resize(4, nullptr);
     }
+    Node(){
+        pos.x = 0.0;
+        pos.y = 0.0;
+        nodeType = "white";
+        data.clear();
+        quadrants.resize(4, nullptr);
+    }
 };
 
 class QuadTree{
@@ -45,7 +52,7 @@ class QuadTree{
       int totalNodes();
       void insert(Node* node);
       void insert(Point p, int data);//auxiliar para el otro insert
-      vector<pair<Point, vector<int>>> list(); 
+      vector<Node> list(); 
       int countRegion(Point p, int d); 
       int AggregateRegion(Point p, int d); 
 };
