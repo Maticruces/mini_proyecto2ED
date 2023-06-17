@@ -25,14 +25,27 @@ QuadTree::QuadTree(Point topL, Point bottomR){
 
 bool QuadTree::inBoundary(Point p){ 
     return (p.x >= topLeft.x && p.x <= bottomRight.x && p.y >= topLeft.y && p.y <= bottomRight.y);
-}  //funcion puntoEstaDentroDeMi? para plano derecho+ abajo+ (como en el canvas de java) .... !
+}//indica si un punto está dentro del quadtree definido en main
 
 int QuadTree::totalPoints(){//Retorna la cantidad de puntos almacenados en el QuadTree
     return pointCount;
 } 
 
 int QuadTree::totalNodes(){//Retorna la cantidad de nodos, tanto blancos como negros, en el QuadTree
-    
+    int nodeCount = 1;//Parte en uno porque siempre tenemos nodo raíz
+    if(topLeftTree != nullptr){
+        nodeCount += topLeftTree->totalNodes();
+    }
+    if(topRightTree != nullptr){
+        nodeCount += topRightTree->totalNodes();
+    }
+    if(bottomLeftTree != nullptr){
+        nodeCount += bottomLeftTree->totalNodes();
+    }
+    if(bottomRightTree != nullptr){
+        nodeCount += bottomRightTree->totalNodes();
+    }
+    return nodeCount;
 }
 
 void QuadTree::insert(Node* node){
@@ -93,19 +106,42 @@ void QuadTree::insert(Node* node){
 
 //Se ocupará como auxiliar para el insert(Node* node) porque es más sencillo que cambiar todo
 void QuadTree::insert(Point p, int data){//Inserta un nuevo punto p en el QuadTree, asociando a dicho punto la información disponible en data (ej. la población de una ciudad con coordenadas p).
+    //este if es para que no se cree un nuevo nodo en caso de insertar un valor en un punto que ya tiene valor
+    //así si el punto ya existe simplemente guarda el nuevo valor en el vector data del nodo
+    if(n != nullptr && n->pos.x == p.x && n->pos.y == p.y){
+        n->data.push_back(data);
+        return;
+    }
     Node* newNode = new Node(p);
     newNode->data.push_back(data);
     insert(newNode);
 }
 
-vector<Node> QuadTree::list(){
-/*
-Retorna un contenedor con todos los puntos almacenados en el QuadTree. 
-Por cada punto retorna sus coordenadas y su valor asociado (ej. la población). 
-Para esta función, queda a criterio de los estudiantes elegir un recorrido entre preorder, postorder o una variante de inorder. 
-El tipo de retorno dependerá del tipo de contenedor que se utilice.
-*/
-    
+vector<Node> QuadTree::list(){//Elegí preorder porque me gusta más, creo que es más ordenado para ver el quadtree
+   vector<Node> quadData;
+    if (n != nullptr) {
+        Node currentNode;
+        currentNode.pos = n->pos;
+        currentNode.data = n->data;
+        quadData.push_back(currentNode);
+    }
+    if(topLeftTree != nullptr){
+        vector<Node> subquad = topLeftTree->list();
+        quadData.insert(quadData.end(), subquad.begin(), subquad.end());
+    }
+    if(topRightTree != nullptr){
+        vector<Node> subquad = topRightTree->list();
+        quadData.insert(quadData.end(), subquad.begin(), subquad.end());
+    }
+    if(bottomLeftTree != nullptr){
+        vector<Node> subquad = bottomLeftTree->list();
+        quadData.insert(quadData.end(), subquad.begin(), subquad.end());
+    }
+    if(bottomRightTree != nullptr){
+        vector<Node> subquad = bottomRightTree->list();
+        quadData.insert(quadData.end(), subquad.begin(), subquad.end());
+    }
+    return quadData;
 }
 
 int QuadTree::countRegion(Point p, int d){
