@@ -20,16 +20,16 @@ int main(){
     cout << "Cantidad de Puntos: " << plane2D.totalPoints() << endl;
     cout << "Cantidad de Nodos: " << plane2D.totalNodes() << endl << endl;
 
-    vector<Node> traversalResult = plane2D.list();
-    for (int i = 0; i < traversalResult.size(); i++){
-    Node nodo = traversalResult[i];
-    cout << "Coordenadas: (" << nodo.pos.x << ", " << nodo.pos.y << ")" << endl;
-    cout << "Población: ";
-    for (int j = 0; j < nodo.data.size(); j++) {
-        int data = nodo.data[j];
-        cout << data << " ";
-    }
-    cout << endl << endl;
+    vector<Node> plane2D_Data = plane2D.list();
+    for (int i = 0; i < plane2D_Data.size(); i++){
+        Node nodo = plane2D_Data[i];
+        cout << "Coordenadas: (" << nodo.pos.x << ", " << nodo.pos.y << ")" << endl;
+        cout << "Población: ";
+        for (int j = 0; j < nodo.data.size(); j++) {
+            int data = nodo.data[j];
+            cout << data << " ";
+        }
+        cout << endl << endl;
     }
   
   /*Quad plane2D(Point(0, 0), Point(8, 8));
