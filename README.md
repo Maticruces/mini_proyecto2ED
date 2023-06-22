@@ -16,4 +16,5 @@ Ademas le haria una reforma exhaustiba al informe no me parece la imagen del ter
 
 
 22Junio: quedan 5 dias para entregar estooo 😫😭🥶 nos falta completarlo y hacerel informe :=( -EduardoParra.
+Falta afinar el cargador de datos. tengo que estudiar logica para mañana y algebra para el 27 :=(
 
