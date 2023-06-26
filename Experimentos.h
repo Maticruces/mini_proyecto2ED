@@ -64,7 +64,7 @@ void readCSV(const string& filename, QuadTree& quadtree, int numCitys){
  * desde un archivo CSV a un quadtree.
  */
 double insertTime(int numCitys){
-    QuadTree quadtree(Point(0.0, 0.0), Point(500.0, 300.0));
+    QuadTree quadtree(Point(0.0, 0.0), Point(180.0, 360.0));
     auto start = chrono::high_resolution_clock::now();
     readCSV("worldcitiespop_fixed.csv", quadtree, numCitys);
     auto end = chrono::high_resolution_clock::now();
