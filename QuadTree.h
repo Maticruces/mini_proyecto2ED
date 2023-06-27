@@ -69,6 +69,8 @@ class QuadTree{
         QuadTree* bottomRightTree;
         int pointCount;
         bool inBoundary(Point p);
+        void setNodeType(Node* n);
+        string getNodeType(Node* n);
     public:
         QuadTree();
         QuadTree(Point topLeft, Point bottomRight);
