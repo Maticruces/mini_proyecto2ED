@@ -48,6 +48,37 @@ bool QuadTree::inBoundary(Point p){
 }
 
 /**
+ * Este método asigna el tipo de nodo, blanco si representa un cuadrante sin puntos, negro si representa un
+ * cuadrante con al menos un punto. 
+ * 
+ * @param n puntero a un nodo del quadtree.
+ */
+void QuadTree::setNodeType(Node* n){
+    if(n == nullptr){
+        return;
+    }
+    if(n->data.empty()){
+        n->nodeType = "white";
+    }else{
+        n->nodeType = "black";
+    }
+}
+
+/**
+ * Este método nos entrega el tipo de nodo.
+ * 
+ * @param n puntero a un nodo del quadtree.
+ * 
+ * @return retorna la propiedad 'nodeType' del nodo solicitado.
+ */
+string QuadTree::getNodeType(Node* n){
+    if(n == nullptr){
+        return "";
+    }
+    return n->nodeType;
+}
+
+/**
  * Este método entrega la cantidad de puntos en el QuadTree.
  * 
  * @return 'totalPoints()' retorna un valor entero que representa el número total de puntos almacenados en 
@@ -101,8 +132,6 @@ void QuadTree::insert(Node* node){
             n = node;
             n->nodeType = "black";
             pointCount++;
-        }else{
-            n->data.push_back(node->data[0]);
         }
         return;
     }
